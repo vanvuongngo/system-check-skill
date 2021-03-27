@@ -1,5 +1,5 @@
 # <img src="https://raw.githack.com/FortAwesome/Font-Awesome/master/svgs/solid/clipboard-check.svg" card_color="#D81159" width="50" height="50" style="vertical-align:bottom"/> System Check
-Basic checks of mark ii dev kit
+Basic checks of mycroft.ai Mark II dev kit
 
 ## About
 This skill check basically functions of the mark ii dev kit.
