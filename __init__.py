@@ -63,7 +63,7 @@ class SystemCheck(MycroftSkill):
             pixels.append(255)
         bus.write_i2c_block_data(address, 0, pixels)
         bus.write_i2c_block_data(address, 6, pixels)
-        time.sleep(8)
+        time.sleep(5)
 
         response = self.ask_yesno('check_colors', data={"color": "blue"})
         if response == 'yes':
