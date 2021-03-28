@@ -11,7 +11,7 @@ class SystemCheck(MycroftSkill):
     @intent_file_handler('check.system.intent')
     def handle_check_system(self, message):
         self.speak_dialog('check.system')
-        time.sleep(4) # wait because mycroft is using pixels
+        time.sleep(3) # wait because mycroft is using pixels
         
         bus = SMBus(1)
         pixels = []
@@ -21,7 +21,14 @@ class SystemCheck(MycroftSkill):
             pixels.append(0)
         bus.write_i2c_block_data(address, 0, pixels)
         bus.write_i2c_block_data(address, 6, pixels)
-        self.speak_dialog("system.check", data={"color": "red"})
+        response = self.ask_yesno('see_colors', data={"color": "red"})
+        if response == 'yes':
+            self.speak_dialog('color_checked', data={"color": "red"})
+            return
+        if response == 'no':
+            self.speak_dialog('color_invalid', data={"color": "red"})
+            return
+
         bus.close()
 
 
