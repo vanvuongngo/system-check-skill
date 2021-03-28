@@ -1,5 +1,6 @@
 from mycroft import MycroftSkill, intent_file_handler
 from smbus2 import SMBus
+import time
 
 address = 0x4
 
@@ -10,6 +11,7 @@ class SystemCheck(MycroftSkill):
     @intent_file_handler('check.system.intent')
     def handle_check_system(self, message):
         self.speak_dialog('check.system')
+        time.sleep(4) # wait because mycroft is using pixels
         
         bus = SMBus(1)
         pixels = []
