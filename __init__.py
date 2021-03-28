@@ -21,13 +21,13 @@ class SystemCheck(MycroftSkill):
             pixels.append(0)
         bus.write_i2c_block_data(address, 0, pixels)
         bus.write_i2c_block_data(address, 6, pixels)
-        response = self.ask_yesno('see_colors', data={"color": "red"})
+
+        time.sleep(2)
+        response = self.ask_yesno('check_colors', data={"color": "red"})
         if response == 'yes':
             self.speak_dialog('color_checked', data={"color": "red"})
-            return
-        if response == 'no':
+        elif response == 'no':
             self.speak_dialog('color_invalid', data={"color": "red"})
-            return
 
         bus.close()
 
