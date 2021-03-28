@@ -34,7 +34,7 @@ class SystemCheck(MycroftSkill):
         response = self.ask_yesno('check_colors', data={"color": "red"})
         if response == 'yes':
             self.speak_dialog('color_checked', data={"color": "red"})
-        elif response == 'no':
+        else:
             self.speak_dialog('color_invalid', data={"color": "red"})
         time.sleep(4)
 
@@ -51,7 +51,7 @@ class SystemCheck(MycroftSkill):
         response = self.ask_yesno('check_colors', data={"color": "green"})
         if response == 'yes':
             self.speak_dialog('color_checked', data={"color": "green"})
-        elif response == 'no':
+        else:
             self.speak_dialog('color_invalid', data={"color": "green"})
         time.sleep(4)
 
@@ -63,12 +63,12 @@ class SystemCheck(MycroftSkill):
             pixels.append(255)
         bus.write_i2c_block_data(address, 0, pixels)
         bus.write_i2c_block_data(address, 6, pixels)
-        time.sleep(4)
+        time.sleep(8)
 
         response = self.ask_yesno('check_colors', data={"color": "blue"})
         if response == 'yes':
             self.speak_dialog('color_checked', data={"color": "blue"})
-        elif response == 'no':
+        else:
             self.speak_dialog('color_invalid', data={"color": "blue"})
 
         bus.close()
